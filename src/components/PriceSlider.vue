@@ -1,8 +1,8 @@
 <template>
   <transition name="fade">
-    <div v-if="sliderStatus">
+    <div v-if="sliderStatus" class="my-5">
       <div class="align-items-center" :class="sliderState">
-        <label for="" class="font-weight-bold mr-2">Max</label>
+        <label class="font-weight-bold mr-2">Max</label>
         <input
           type="text"
           class="form-control mx-2"
@@ -48,6 +48,6 @@ export default {
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: all 3s ease-in-out;
+  transition: all 1s ease-in-out;
 }
 </style>

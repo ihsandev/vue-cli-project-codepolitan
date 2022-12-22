@@ -7,7 +7,7 @@
     @leave="leave"
   >
     <div
-      class="card mb-3 d-none"
+      class="card mb-3"
       v-for="(item, index) in showItem"
       :key="item.id"
       :data-index="index"
@@ -23,10 +23,16 @@
             </h2>
             <h5 class="card-title">{{ item.name }}</h5>
             <p class="card-text text-truncate" v-html="item.description"></p>
-            <button @click.stop="$emit('remove', item)" class="btn btn-danger">
+            <button
+              @click.stop="$emit('remove-item', item)"
+              class="btn btn-danger mr-2"
+            >
               -
             </button>
-            <button @click.stop="$emit('add', item)" class="btn btn-primary">
+            <button
+              @click.stop="$emit('add-item', item)"
+              class="btn btn-primary"
+            >
               +
             </button>
           </div>
@@ -48,7 +54,7 @@ export default {
     showItem: function () {
       let max = this.maximum;
       const product = this.products.filter(function (item) {
-        return item.price <= Number(max);
+        return Math.trunc(item.price) <= Number(max);
       });
       return product;
     },
